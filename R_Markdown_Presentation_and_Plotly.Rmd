@@ -1,0 +1,30 @@
+---
+title: "R_Markdown_Presentation_and_Plotly"
+author: "Joao Felizardo"
+date: "5/21/2019"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown Presentation & Plotly
+
+I'm going to use [The Economic Freedom Index](https://www.kaggle.com/lewisduncan93/the-economic-freedom-index) dataset to show a graphic relating the `Government.Integrity`, `Judical.Effectiveness` and `Financial.Freedom`. For this I'll use the plotly library.
+
+## Setting environment and Getting data
+```{r echo=TRUE, warning=FALSE, message=FALSE}
+library(plotly)
+ef <- read.csv("economic_freedom_index2019_data.csv")
+```
+
+## Build graphic
+
+```{r echo=TRUE, warning=FALSE, message=FALSE}
+plot_ly(x = ~ef$Government.Integrity, y = ~ef$Judical.Effectiveness, z = ~ef$Financial.Freedom, type = "scatter3d", color = ~ef$Financial.Freedom)
+```
+
+## Slide with Plot
+As we can see there's a positive correlation between `Government.Integrity`, `Judical.Effectiveness` and `Financial.Freedom`.
+
